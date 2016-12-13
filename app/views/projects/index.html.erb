@@ -5,7 +5,7 @@
     <h2><%= link_to project.title, project_path(project) %></h2>
     <p><%= "Status: "+project.status %><p>
     <p><%= "Deadline: "+project.deadline.strftime("%m/%d/%Y") %></p>
-    <p><%= "Day Remaining: "+project.getTimeLeft %></p>
+    <p class="<%= project.getTimeClass %>"><%= "Day Remaining: "+project.getTimeLeft %></p>
   </div>
   <hr>
 <% end %>

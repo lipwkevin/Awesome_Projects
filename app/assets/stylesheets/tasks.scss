@@ -85,16 +85,9 @@ li {
 
 .completed{
   & > div:first-child{
-    background: lightgrey;
+    // background: lightgrey;
     text-decoration: line-through;
   }
-}
-
-.completedFlag{
-  background-color: lightgrey;
-  text-decoration: line-through;
-  color: red;
-  font-weight: bold;
 }
 
 p{

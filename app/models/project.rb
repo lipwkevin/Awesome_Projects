@@ -19,6 +19,12 @@ class Project < ApplicationRecord
     return ((remain<0)? 'Expired' : "#{remain} Days")
   end
 
+  def getTimeClass
+    today = Date.today
+    remain = (deadline.mjd - today.mjd)
+    return ((remain<0)? 'Expired' : "")
+  end
+
   def is_member(user)
     return contributors.find(user).present?
   end

@@ -7,7 +7,7 @@
     <% @project.contributors.each do| member| %>
       <tr>
           <td><%= member.name %></td>
-          <td class=''>
+          <td class="<%= @project.checkUser(member) %>">
             <% if member!=current_user %>
               <%= link_to @project.checkUser(member),editMember_path(@project, user_id:member.id),method: :post %>
             <% end %>
@@ -24,6 +24,7 @@
 
 <div class='addMember-widget'>
   <h2>Add Member</h2>
+  <br>
   <%= form_tag  updateMember_path(@project.id) do  %>
   <div>
       <%= collection_select(

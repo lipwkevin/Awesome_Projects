@@ -24,8 +24,14 @@ p {
 .project-detail{
   padding-top: 10px;
   padding-bottom: 10px;
+  a{
+    color: black;
+  }
+  .Expired{
+    color:red;
+  }
   &:hover{
-  background-color: lightgrey;
+  background-color:  	#F0F8FF;
   }
 }
 h2{
@@ -48,8 +54,15 @@ li{
     font-size: 2rem;
     border: 1px solid #090909;
   }
-  a{
-    color:black
+  .Member{
+    & > a{
+      color:black;
+    }
+  }
+  .Admin{
+    & > a{
+      color:red;
+    }
   }
   tr > td:last-child {
     text-align: center;
@@ -58,4 +71,9 @@ li{
 
 .btn-success{
   margin-top: 10px;
+}
+
+.link_to{
+  position: absolute;
+  right: 10px;
 }
