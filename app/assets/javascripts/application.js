@@ -15,4 +15,5 @@
 //= require jquery-ui
 //= require chosen-jquery
 //= require bootstrap-sprockets
+//= require bootstrap
 //= require_tree .

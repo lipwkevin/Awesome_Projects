@@ -19,7 +19,7 @@ updateDB = function(id,checked){
   // console.log(id);
   $.ajax({
     type: "POST",
-    url: `${$DOMAIN}/updateComplete/${id}`,
+    url: $DOMAIN +'/updateComplete/'+id,
     data: checked
   })
 }
