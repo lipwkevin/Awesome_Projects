@@ -47,6 +47,6 @@ function checkDB(id){
   console.log('check updates')
   $.ajax({
     type: "GET",
-    url: `${$DOMAIN}/projects/${id}/update_now`
+    url: $DOMAIN+'/projects/'+id+'/update_now'
   })
 }

@@ -61,7 +61,7 @@ function setNewTaskForm(){
     var xhr = null;
     $.ajax({
       type: "POST",
-      url: `${$DOMAIN}/goals/${goal_id}/tasks`,
+      url: $DOMAIN+'/goals/'+goal_id+'/tasks',
       data: {task},
       success:function(data){
         xhr = data
@@ -94,7 +94,7 @@ function setNewGoalForm(){
     }
     $.ajax({
       type: "POST",
-      url: `${$DOMAIN}/projects/${project_id}/goals`,
+      url: $DOMAIN+'/projects/'+project_id+'/goals',
       data: {goal},
       success: function(data){
         $("#add-goal").prop('disabled', false);
@@ -117,7 +117,7 @@ function saveTasksToGoal(){
       task_id = tasks.eq(i).attr('task-id');
       $.ajax({
         type: "POST",
-        url: `${$DOMAIN}/updateTask/${task_id}`,
+        url: $DOMAIN+'/updateTask/'+task_id,
         data: {task_id:task_id,goal_id:goal_id},
       })
     };
