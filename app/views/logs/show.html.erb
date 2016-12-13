@@ -1,0 +1,9 @@
+<%= render '/projects/menu', id:@id%>
+<h1> Full Project History </h1>
+<br>
+<% @logs.each do |log| %>
+  <p><b>Time: <%= log.created_at %> </b></p>
+  <p><b>Created by: <%= log.getUser %> </b></p>
+  <p><%= log.body.gsub(/\n/, '<br/>').html_safe %></p>
+  <hr>
+<% end %>

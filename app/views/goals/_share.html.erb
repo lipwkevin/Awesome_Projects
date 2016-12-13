@@ -1,0 +1,20 @@
+<label>
+  <h2><%= goal.title %></h2>
+  <p><%= goal.description %></p>
+  <b> Completion:</b>
+  <div id="progress-<%= goal.id %>"
+        completed = "<%= goal.getCompleted %>"
+        total = "<%= goal.getTotal %>">
+  </div>
+  <script>$("#progress-<%= goal.id %>").progressbar({
+      value: <%= goal.getCompletionRate %>
+    });</script>
+</label>
+<ul class="goal">
+  <% tasks = Task.getTasks(goal.id) %>
+  <% tasks.each do |task| %>
+    <%= render '/tasks/share', task:task %>
+  <% end %>
+</ul>
+
+<hr>

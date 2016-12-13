@@ -1,0 +1,125 @@
+$(function(){
+  setTask();
+  setGoal();
+})
+
+setSortable = function(){
+  $('.goallist').sortable({
+                 connectWith: $('.goallist')
+         });
+}
+
+setTask = function(){
+  $('.edit-goal').on('click','.addTask',function(evt){
+    evt.stopImmediatePropagation();
+    $('.addTask').prop('disabled', true);
+    $(this).siblings('ul').prepend('<li id="form">'+$('#new-task-form-section').html()+'</li>');
+    setNewTaskForm();
+  });
+
+  $('.edit-goal').on('click','.button-flag',function(evt){
+    evt.stopImmediatePropagation();
+    $(this).parents('.tasks').toggleClass('flagged');
+  })
+}
+
+setGoal = function(){
+  $("#add-goal").click(function(evt){
+    evt.stopImmediatePropagation();
+    $("#add-goal").prop('disabled', true);
+    $('#goals').prepend('<ul class="goal">'+$('#new-goal-form-section').html()+'</ul>');
+    setNewGoalForm();
+  });
+  setSortable();
+  saveTasksToGoal();
+}
+
+function setNewTaskForm(){
+  $('#deadline').datepicker({ dateFormat: 'yy-mm-dd'});
+  $('#chosen-task').chosen({ width: '300px' });
+  $('#new-task-cancel').click(function(){
+    $(this).parents('li').remove();
+    $('.addTask').prop('disabled', false);
+  })
+
+  $('#new-task-submit').click(function(){
+    var title= $(this).siblings('#title').val();
+    var deadline= $(this).siblings('#deadline').val();
+    var completed = $(this).siblings('#completed').prop('checked');;
+    var flagged = $(this).siblings('#flagged').prop('checked');
+    var goal_id = $(this).parents('.goallist').attr('goal-id');
+    $(this).parents('.goallist').toggleClass('active');
+    ids = $('#chosen-task').chosen().val();
+    task = {
+      title:title,
+      deadline:deadline,
+      completed:completed,
+      flagged:flagged,
+      goal_id:goal_id,
+      user_ids:ids
+    }
+    var xhr = null;
+    $.ajax({
+      type: "POST",
+      url: `${$DOMAIN}/goals/${goal_id}/tasks`,
+      data: {task},
+      success:function(data){
+        xhr = data
+        $('.addTask').prop('disabled', false);
+        $('.active').append(data)
+        $('.active').children('#form').remove();
+        $('.active').toggleClass('active');
+      }
+    })
+  })
+}
+
+function setNewGoalForm(){
+  $('#deadline').datepicker({ dateFormat: 'yy-mm-dd'});
+  $('#new-goal-cancel').click(function(){
+    $(this).parents('#new-goal-form').remove();
+    $('#add-goal').prop('disabled', false);
+  });
+
+  $('#new-goal-submit').click(function(){
+    var title= $(this).siblings('#title').val();
+    var description= $(this).siblings('#description').val();
+    var deadline= $(this).siblings('#deadline').val();
+    var project_id=$('#goals').attr('project_id');
+    goal = {
+      title:title,
+      description:description,
+      deadline:deadline,
+      project_id:project_id
+    }
+    $.ajax({
+      type: "POST",
+      url: `${$DOMAIN}/projects/${project_id}/goals`,
+      data: {goal},
+      success: function(data){
+        $("#add-goal").prop('disabled', false);
+        $('#goals').append(data)
+        setTask();
+        setGoal();
+      }
+    })
+    $('.goal').remove();
+    var goal = parseInt($('#goal-count').html());
+    $('#goal-count').html(goal+1);
+  });
+}
+
+function saveTasksToGoal(){
+  $('.saveTasks').click(function(evt){
+    goal_id = $(this).siblings('ul').attr('goal-id')
+    tasks = $(this).siblings('ul').children('li');
+    for(var i=0;i<tasks.length;i+=1){
+      task_id = tasks.eq(i).attr('task-id');
+      $.ajax({
+        type: "POST",
+        url: `${$DOMAIN}/updateTask/${task_id}`,
+        data: {task_id:task_id,goal_id:goal_id},
+      })
+    };
+  })
+}

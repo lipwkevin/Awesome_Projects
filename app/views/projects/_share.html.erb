@@ -1,0 +1,10 @@
+<%= javascript_include_tag('task.js') %>
+
+<h1> Project Info </h1>
+<p>Project Title : <%= project.title %></p>
+<p>Project description: <%= project.description %></p>
+<p>Team Members: <%= project.contributors.map(&:name).join(', ') %></p>
+<hr>
+<% project.goals.each do| goal| %>
+  <%= render '/goals/share', goal:goal %>
+<% end %>

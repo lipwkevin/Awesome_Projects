@@ -1,0 +1,8 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :title %>
+  <%= f.input :deadline,as: :string,:input_html => {:class=>"datepicker"}%>
+  <%= f.input :completed %>
+  <%= f.input :flagged %>
+  <%= f.submit 'Update' , {:class=>"btn btn-default"}%>
+  <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+<% end %>

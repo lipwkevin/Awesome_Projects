@@ -1,0 +1,52 @@
+$DOMAIN = "<%= "#{ENV['DOMAIN']}" %>";
+
+updateProgress = function(id,state){
+  var goal_id = $('[task-id='+id+']').parent().attr('goal-id');
+  var completed = parseInt($('#progress-'+goal_id).attr('completed'));
+  var total = parseInt($('#progress-'+goal_id).attr('total'))
+  if(state){
+    completed+=1;
+  }else{
+    completed-=1;
+  }
+  var completion = Math.floor((completed/total)*100)
+  $('.completion-'+goal_id).html(completion)
+  $('#progress-'+goal_id).attr('completed',completed);
+  $('#progress-'+goal_id).progressbar({value:completion})
+}
+
+updateDB = function(id,checked){
+  // console.log(id);
+  $.ajax({
+    type: "POST",
+    url: `${$DOMAIN}/updateComplete/${id}`,
+    data: checked
+  })
+}
+$(function(){
+  $('li').on('change','.checkbox', function(evt){
+    evt.stopImmediatePropagation();
+    var checked = $(this).prop('checked')==true
+    var id = $(this).attr('check-id');
+    $('[task-id='+id+']').toggleClass('completed');
+    updateProgress(id,checked)
+    updateDB(id,checked);
+  });
+});
+
+
+
+function setTimer(){
+  var project_id = $('#title').attr('project-id');
+  setInterval(function(){
+     checkDB(project_id);
+  }, 10*1000);
+}
+
+function checkDB(id){
+  console.log('check updates')
+  $.ajax({
+    type: "GET",
+    url: `${$DOMAIN}/projects/${id}/update_now`
+  })
+}

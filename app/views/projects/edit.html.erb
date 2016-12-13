@@ -1,0 +1,37 @@
+<%= javascript_include_tag "project-edit" %>
+<h1>Update Project</h1>
+
+<%= render 'menu', id:@project.id %>
+
+<div>
+  <h1> Project Info</h1>
+  <%= render 'form', { btn_label: 'Update' } %>
+  <hr>
+</div>
+
+<div>
+  <h1>
+    Goals and Tasks
+  </h1>
+  <p>
+    <button id='add-goal' class = 'btn btn-default'>New Goal</button>
+    <button class='btn btn-danger btn-delete'><%= link_to "Delete All Goals" ,deleteAll_path(@project)%></button>
+    Total Number of Goals: <span id='goal-count'><%= @project.goals.size %></span>
+  </p>
+  <hr>
+  <br>
+  <%# render 'goals/new' %>
+  <div id='goals' project_id="<%= @project.id %>">
+    <% @project.goals.each do| goal| %>
+      <%= render '/goals/edit', goal:goal %>
+    <% end %>
+  </div>
+</div>
+
+<div id='new-goal-form-section' class='hidden task-form'>
+  <%= render 'goals/new' %>
+</div>
+
+<div id='new-task-form-section' class='hidden goal-form'>
+  <%= render 'tasks/new' %>
+</div>

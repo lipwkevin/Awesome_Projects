@@ -1,0 +1,14 @@
+<% if Leading.isAdmin(id,current_user) %>
+    <%= link_to 'Project Home', project_path(id) ,{ :class => "btn btn-primary btn-lg" } %>
+    <%= link_to 'Edit Project', edit_project_path(id) ,{ :class => "btn btn-primary btn-lg" } %>
+    <%= link_to 'Members', editMember_path ,{ :class => "btn btn-primary btn-lg" } %>
+
+    <%= link_to 'Generate Sharable link', share_project_path(id) ,{ :class => "btn btn-primary btn-delete btn-lg" } %>
+    <%= link_to 'Project Logs',logs_path(id),{ :class => "btn btn-primary btn-lg" } %>
+    <button class='btn-delete btn btn-danger btn-lg'>
+      <%= link_to 'Delete Project', project_path(id),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+    </button>
+<hr>
+<% end %>

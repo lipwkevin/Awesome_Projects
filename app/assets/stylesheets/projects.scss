@@ -1,0 +1,61 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.remove {
+  color: red;
+}
+
+
+.ui-progressbar-value{
+   color: green;
+}
+
+.progressbar {
+  color:green;
+}
+
+
+p {
+  font-size: 2rem;
+}
+
+.project-detail{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &:hover{
+  background-color: lightgrey;
+  }
+}
+h2{
+  margin-top: 0px;
+}
+li{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.btn-delete{
+  a{
+    color: #ffffff;
+  }
+}
+
+.member-table{
+  border: 1px solid #090909;
+  td{
+    font-size: 2rem;
+    border: 1px solid #090909;
+  }
+  a{
+    color:black
+  }
+  tr > td:last-child {
+    text-align: center;
+  }
+}
+
+.btn-success{
+  margin-top: 10px;
+}

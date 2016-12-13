@@ -1,0 +1,14 @@
+<h1>Messenger</h1>
+<h2> Chatting with: <%= @user.name %> </h2>
+<hr>
+<div class='chat-contein'>
+  <% @messages.each do |message| %>
+    <div>
+      <h2 class = <%= (message.getCssClass(current_user)) %>>
+          <span><%= message.getSenderName %>:<%= message.body %></span>
+          <p class='time'>Sent at: <%= message.getTime %></p>
+        </h2>
+    </div>
+  <% end %>
+</div>
+<%= render 'conversation' ,id:params[:id]%>

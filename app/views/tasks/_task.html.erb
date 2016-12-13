@@ -1,0 +1,15 @@
+<li task-id="<%= task.id %>" class="<%=task.getClassType%>">
+  <% task.flagged = Task.checkFlag(task.id) %>
+  <div class='show-task'>
+    <% if true %>
+      <label class="switch" switch-id="<%= task.id %>">
+        <input class="checkbox" type="checkbox" check-id="<%= task.id %>" <%= (task.completed)?"checked='true'":"" %>>
+        <div class="slider round"></div>
+      </label>
+    <% end %>
+    <div>
+      <i><%= task.title %></i>
+      <p><%= task.deadline.strftime("%m/%d/%Y") %></p>
+    </div>
+  </div>
+</li>

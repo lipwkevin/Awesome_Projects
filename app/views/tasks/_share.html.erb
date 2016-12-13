@@ -1,0 +1,6 @@
+<li class="<%=task.getClassType%>">
+  <% task.flagged = Task.checkFlag(task.id) %>
+  <div><i><%= task.title %></i>
+    <p><%= task.deadline.strftime("%m/%d/%Y") %></p>
+  </div>
+</li>

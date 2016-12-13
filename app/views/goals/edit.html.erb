@@ -1,0 +1,7 @@
+<%= simple_form_for @goal do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :deadline,as: :string,:input_html => {:class=>"datepicker"}%>
+  <%= f.submit 'Update' , {:class=>"btn btn-default"}%>
+  <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+<% end %>

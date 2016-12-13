@@ -1,0 +1,9 @@
+Sending message to <%= @user.name %>
+<hr>
+<%= form_tag new_message_path(@user.id) do |f|  %>
+
+  <%= text_area_tag :body,nil, class: 'form-control' %>
+
+  <%= submit_tag 'Send', class: "btn btn-default"%>
+
+<% end %>

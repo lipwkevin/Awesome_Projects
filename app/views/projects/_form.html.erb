@@ -1,0 +1,21 @@
+<%= @project.errors.full_messages.join(', ') %>
+
+<%= simple_form_for @project do |f| %>
+  <div>
+    <%= f.input :title %>
+  </div>
+
+  <div>
+    <%= f.input :description %>
+  </div>
+
+  <div>
+    <%= f.input :deadline,as: :string,:input_html => {:class=>"datepicker"}%>
+  </div>
+
+  <div>
+    <%= f.input :status, :collection => %w[In-Progress Canceled  Completed],selected: 1 %>
+  </div>
+
+  <%= f.submit btn_label,{class:'btn btn-md btn-success'}%>
+<% end %>

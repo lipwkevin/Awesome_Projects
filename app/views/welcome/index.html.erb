@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <h1>Hi <%= current_user.first_name %>,Welcome back to Awesome Project!</h1>
+<% else %>
+  <h1>Welcome to Awesome Project, Please Login to proceed</h1>
+<% end %>

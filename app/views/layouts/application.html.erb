@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPMTool</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button
+          type="button"
+          class="navbar-toggle collapsed"
+          data-toggle="collapse"
+          data-target="#gmptool-navbar">
+          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+        </button>
+        <span
+        class="glyphicon glyphicon-list-alt navbar-brand"
+        aria-hidden="true"></span>
+      </div>
+
+        <div class="navbar-collapse collapse" id="gmptool-navbar">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Home', root_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'New Project', new_project_path %></li>
+              <li><%= link_to 'My Projects', projects_path %></li>
+              <li><%= link_to 'My Messages', list_message_path %></li>
+            <% end %>
+            <li><%= link_to 'Contact Us', about_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <p class="navbar-text">Hello <%= current_user.first_name %></p>
+              <li>
+                <%= link_to 'Sign out',
+                  sessions_path,
+                  method: :delete
+                  %>
+                </li>
+            <% else %>
+              <li><%= link_to 'Sign up', new_user_path %></li>
+              <li><%= link_to 'Sign In', new_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <% if notice || alert %>
+      <div
+        class="alert alert-<%= notice ? 'success' : 'danger'%> alert-dismissable"
+        role="alert">
+        <%= notice || alert %>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+
+
+</body>
+
+<footer>
+    <div class="panel-footer footer navbar-fixed-bottom">Awesome Projects - Get your project done</div>
+</footer>
+
+</html>

@@ -1,0 +1,40 @@
+<%= render 'menu', id:@project.id %>
+
+<h1>Updating Member List</h1>
+<div>
+  <h2>Members: </h2>
+  <table id='membersList' class = 'member-table table table-bordered table-hover'>
+    <% @project.contributors.each do| member| %>
+      <tr>
+          <td><%= member.name %></td>
+          <td class=''>
+            <% if member!=current_user %>
+              <%= link_to @project.checkUser(member),editMember_path(@project, user_id:member.id),method: :post %>
+            <% end %>
+          </td>
+          <td class=''><% if member!=current_user %>
+            <%= link_to "x",removeMember_path(@project, user_id:member.id),method: :post,class:'remove'%>
+          <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<hr>
+
+<div class='addMember-widget'>
+  <h2>Add Member</h2>
+  <%= form_tag  updateMember_path(@project.id) do  %>
+  <div>
+      <%= collection_select(
+      :user,:user_id,User.all,
+      :id,:name,
+      {},
+      {multiple: true, class: 'chosen-select'}) %>
+  </div>
+    <%= submit_tag "Submit", class:'btn btn-success btn-lg' %>
+  <% end %>
+</div>
+<script>
+  $('.chosen-select').chosen({ width: '500px' });
+</script>

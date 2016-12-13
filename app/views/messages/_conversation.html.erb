@@ -1,0 +1,8 @@
+<hr>
+<%= form_tag show_message_path(id) do |f|  %>
+
+  <%= text_area_tag :body,nil, class: 'form-control' %>
+
+  <%= submit_tag 'Send', class: "btn btn-default"%>
+
+<% end %>

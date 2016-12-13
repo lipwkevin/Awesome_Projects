@@ -1,0 +1,13 @@
+Conversation with:
+
+<ul class='table'>
+  <% @users.each_with_index do |user,index| %>
+    <li>
+      <h2><%= link_to user.name,show_message_path(@cons[index].id) %></h2>
+      <p>
+        Last Message: <%= @cons[index].updated_at.strftime('%d %b %Y %H:%M:%S') %>
+      </p>
+      <hr>
+    </li>
+  <% end %>
+</ul>
