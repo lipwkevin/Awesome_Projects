@@ -9,15 +9,17 @@
   }
 }
 .goal{
-  li{
+  & > li{
     margin-bottom: 5px;
     margin-top: 5px;
+  }
+  & > li:hover{
+    background-color: #B0C4DE;
   }
 }
 
 form{
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
 }
 
 .goallist{

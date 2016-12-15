@@ -80,7 +80,7 @@ li {
 
 .expired{
   & > div > .info{
-    background: yellow;
+    background: rgb(246, 251, 139);
     border-radius: 5px;
     margin: 5px;
     & > p {
@@ -96,14 +96,6 @@ li {
   & > div > .info{
     text-decoration: line-through;
   }
-}
-
-p{
-  font-size: 1.5rem;
-}
-
-i{
-  font-size: 1.5rem;
 }
 
 .show-task{
@@ -122,6 +114,12 @@ i{
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 10px;
+  & > p{
+    font-size: 1.5rem;
+  }
+  & > i{
+    font-size: 1.5rem;
+  }
 }
 
 .btn-delete{
