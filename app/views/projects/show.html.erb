@@ -1,18 +1,19 @@
 <%= javascript_include_tag('project-show.js') %>
 <%= render 'menu', id:@project.id %>
-
-<h1 id='title' project-id="<%= @project.id %>"> Project Info </h1>
-<p>Project Title : <%= @project.title %></p>
-<p>Project description: <%= @project.description %></p>
-<p>Project Deadline: <%= @project.deadline.strftime("%m/%d/%Y") %></p>
-<p>Time Remaining: <%= @project.getTimeLeft %></p>
-<p>Team Admins: <%= @project.leaders.map(&:name).join(', ') %></p>
-<p>Team Members:
-  <% @project.contributors.each_with_index do |user,index| %>
-    <%= ',' unless index==0 %>
-    <%= link_to user.name,new_message_path(user.id)%>
-  <% end %>
-</p>
+<div class = 'project-info'>
+  <h1 id='title' project-id="<%= @project.id %>"> Project Info </h1>
+  <p>Project Title : <%= @project.title %></p>
+  <p>Project description: <%= @project.description %></p>
+  <p>Project Deadline: <%= @project.deadline.strftime("%m/%d/%Y") %></p>
+  <p>Time Remaining: <%= @project.getTimeLeft %></p>
+  <p>Team Admins: <%= @project.leaders.map(&:name).join(', ') %></p>
+  <p>Team Members:
+    <% @project.contributors.each_with_index do |user,index| %>
+      <%= ',' unless index==0 %>
+      <%= link_to user.name,new_message_path(user.id)%>
+    <% end %>
+  </p>
+</div>
 <hr>
 <% @project.goals.each do| goal| %>
   <%= render '/goals/goal', goal:goal %>

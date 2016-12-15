@@ -21,18 +21,16 @@ class Task < ApplicationRecord
 
   def checkFlag()
     today = Date.today
-    if(!completed)
-      if(!flagged)
-        if((deadline - today) <=1)
-          update flagged:true
-          Log.createLogTask('autoflagged',goal.project.id,self)
-        end
+    if(!completed && !flagged)
+      if((deadline - today) <=1)
+        update flagged:true
+        Log.createLogTask('autoflagged',goal.project.id,self)
       end
-      if(!expired)
-        if(deadline.past?)
-          update expired:true
-          Log.createLogTask('expired',goal.project.id,self)
-        end
+    end
+    if(!expired)
+      if(deadline.past?)
+        update expired:true
+        Log.createLogTask('expired',goal.project.id,self)
       end
     end
     return expired

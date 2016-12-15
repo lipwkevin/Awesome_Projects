@@ -79,14 +79,13 @@ li {
 }
 
 .expired{
-  & > div:first-child{
+  & > div > .info{
     background: yellow;
   }
 }
 
 .completed{
-  & > div:first-child{
-    // background: lightgrey;
+  & > div > .info{
     text-decoration: line-through;
   }
 }
@@ -112,11 +111,17 @@ i{
    padding: 5px;
 }
 .tasks{
-  & > div{
+  & > div > div{
     margin-left: 10px;
     display: inline-flex;
     padding: 5px;
   }
+}
+
+.info{
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
 }
 
 .btn-delete{
