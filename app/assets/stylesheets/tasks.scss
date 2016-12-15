@@ -79,8 +79,9 @@ li {
 }
 
 .expired{
-  color: yellow;
-  font-weight: bold;
+  & > div:first-child{
+    background: yellow;
+  }
 }
 
 .completed{

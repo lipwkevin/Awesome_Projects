@@ -43,6 +43,8 @@ class Log < ApplicationRecord
       body = "#{user.name} un-flagged a task: #{task.title}"
     when 'autoflagged'
       body = "#{task.title} is flagged due to deadline"
+    when 'expired'
+      body = "#{task.title} had passed its deadline"
     end
     Log.create(body:body,project_id:id)
   end

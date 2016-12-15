@@ -13,24 +13,29 @@ class Task < ApplicationRecord
   end
   def getClassType
     str= ""
-
-    str += (completed ? 'completed' : "")
-    str += " "
-    str += (flagged ? 'flagged' : "")
+    str += (completed ? 'completed ' : "")
+    str += (flagged ? 'flagged ' : "")
+    str += (expired&&!completed ? 'expired ' : "")
     return str
   end
 
-  def self.checkFlag(id)
-    task = Task.find(id)
+  def checkFlag()
     today = Date.today
-    if( !task.completed && !task.flagged)
-      if((task.deadline - today) <=1)
-        task.update flagged:true
-        Log.createLogTask('autoflagged',task.goal.project.id,task)
-        return true
+    if(!completed)
+      if(!flagged)
+        if((deadline - today) <=1)
+          update flagged:true
+          Log.createLogTask('autoflagged',goal.project.id,self)
+        end
+      end
+      if(!expired)
+        if(deadline.past?)
+          update expired:true
+          Log.createLogTask('expired',goal.project.id,self)
+        end
       end
     end
-    return false
+    return expired
   end
 
   def update_project

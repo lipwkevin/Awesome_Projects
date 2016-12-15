@@ -29,6 +29,13 @@ $(function(){
     var checked = $(this).prop('checked')==true
     var id = $(this).attr('check-id');
     $('[task-id='+id+']').toggleClass('completed');
+    if(checked){
+      $('[task-id='+id+']').removeClass('expired');
+    }else {
+      if($('[task-id='+id+']').attr('expired')=='true'){
+        $('[task-id='+id+']').addClass('expired');
+      }
+    }
     updateProgress(id,checked)
     updateDB(id,checked);
   });

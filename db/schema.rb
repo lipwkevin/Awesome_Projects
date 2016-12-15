@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209213128) do
+ActiveRecord::Schema.define(version: 20161213211830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20161209213128) do
     t.boolean  "flagged",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.boolean  "expired",    default: false
     t.index ["goal_id"], name: "index_tasks_on_goal_id", using: :btree
   end
 
