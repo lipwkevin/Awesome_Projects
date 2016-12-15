@@ -7,7 +7,7 @@
   text-align: left;
   margin-left: 10px;
   span{
-    background-color: orange;
+    background-color: #ffa500;
   }
 }
 
@@ -15,12 +15,12 @@
   text-align: right;
   margin-right: 10px;
   span{
-    background-color: lightblue;
+    background-color: #b4edff;
   }
 }
 
 .chat-contein{
-  background-color: lightgrey;
+  background-color: rgb(156, 198, 234);
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -35,5 +35,6 @@
   }
   & > p {
     margin-top: 5px;
+    font-size: 1.5rem;
   }
 }

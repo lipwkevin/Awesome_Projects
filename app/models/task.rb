@@ -40,5 +40,6 @@ class Task < ApplicationRecord
 
   def update_project
     goal.project.update updated_at:DateTime.now()
+    goal.update updated_at:DateTime.now()
   end
 end

@@ -1,4 +1,10 @@
 $DOMAIN = "<%= "#{ENV['DOMAIN']}" %>";
+var interid=null;
+$(".projects.show").ready(function(){
+  if(interid==null){
+    setTimer();
+  }
+})
 
 updateProgress = function(id,state){
   var goal_id = $('[task-id='+id+']').parent().attr('goal-id');
@@ -45,15 +51,19 @@ $(function(){
 
 function setTimer(){
   var project_id = $('#title').attr('project-id');
-  setInterval(function(){
+  interid = setInterval(function(){
      checkDB(project_id);
-  }, 10*1000);
+  }, parseInt(<%= ENV['reload-time'] %>)*1000);
 }
 
 function checkDB(id){
-  console.log('check updates')
   $.ajax({
     type: "GET",
-    url: `${$DOMAIN}/projects/${id}/update_now`
+    url: `${$DOMAIN}/projects/${id}/update_now`,
+    success: function(data){
+      if(data.reload){
+        window.location.reload();
+      }
+    }
   })
 }

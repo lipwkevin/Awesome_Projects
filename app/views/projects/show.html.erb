@@ -6,6 +6,7 @@
   <p>Project description: <%= @project.description %></p>
   <p>Project Deadline: <%= @project.deadline.strftime("%m/%d/%Y") %></p>
   <p>Time Remaining: <%= @project.getTimeLeft %></p>
+  <p>Last update: <%= @project.updateTime %></p>
   <p>Team Admins: <%= @project.leaders.map(&:name).join(', ') %></p>
   <p>Team Members:
     <% @project.contributors.each_with_index do |user,index| %>

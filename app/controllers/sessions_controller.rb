@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path, notice: 'Welcome'
     else
-      flash.now[:alert] = 'Fail to log in'
+      flash.now[:alert] = 'Fail to log in, please try again'
       render :new
     end
   end

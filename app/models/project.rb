@@ -34,4 +34,8 @@ class Project < ApplicationRecord
   def checkUser(user)
     return (leaders.find_by(id:user.id).nil?)? 'Member' : 'Admin'
   end
+
+  def updateTime
+    return updated_at.strftime('%d %b %Y %H:%M')
+  end
 end

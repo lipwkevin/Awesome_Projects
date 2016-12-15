@@ -93,9 +93,10 @@ class ProjectsController < ApplicationController
 
   def check_update
     if @project.updated_at>cookies[:timestamp]
-      byebug
       flash.now[:alert] = 'Force Refresh '
-      redirect_to project_path(@project.id)
+      render json: {reload:true}
+    else
+      render json: {reload:false}
     end
   end
 

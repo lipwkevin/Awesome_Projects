@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require chosen-jquery
+//= require jquery-readyselector
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require_tree .

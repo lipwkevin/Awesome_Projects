@@ -103,10 +103,14 @@ li {
    padding: 5px;
 }
 .tasks{
+  background-color: lightblue;
   & > div > div{
     margin-left: 10px;
     display: inline-flex;
     padding: 5px;
+  }
+  .info{
+    width: 350px;
   }
 }
 

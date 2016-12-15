@@ -10,14 +10,14 @@
 .project-detail{
   padding-top: 10px;
   padding-bottom: 10px;
-  a{
-    color: black;
+  & > p {
+    margin-left: 15px;
   }
   .Expired{
     color:red;
   }
   &:hover{
-  background-color: #e0e4f8;
+    background-color: #e0e4f8;
   }
 }
 
@@ -63,7 +63,23 @@ li{
 }
 
 .project-info{
+  & > h2{
+    font-size: 5rem;
+  }
   & > p{
     font-size: 2rem;
+    margin-left: 15px;
+  }
+}
+
+.Admin{
+  & > h2 > a {
+    color: red;
+  }
+}
+
+.Member{
+  & > h2 > a {
+    color: black;
   }
 }

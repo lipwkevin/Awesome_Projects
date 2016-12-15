@@ -15,7 +15,7 @@ class Message < ApplicationRecord
   end
 
   def getTime
-    return created_at.strftime('%d %b %Y %H:%M:%S')
+    return created_at.strftime('%d %b %Y %H:%M')
   end
 
   def getMessage(user)

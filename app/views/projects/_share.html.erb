@@ -1,8 +1,6 @@
-<%= javascript_include_tag('task.js') %>
-
 <div class = 'project-info'>
   <h1> Project Info </h1>
-  <p>Project Title : <%= project.title %></p>
+  <h2><%= project.title %></h2>
   <p>Project description: <%= project.description %></p>
   <p>Team Members: <%= project.contributors.map(&:name).join(', ') %></p>
 </div>

@@ -1,11 +1,12 @@
 <h1> All Contributing Project </h1>
 <hr>
 <% @projects.each do |project| %>
-  <div class='project-detail'>
+  <div class='project-detail <%= project.checkUser(current_user) %>'>
     <h2><%= link_to project.title, project_path(project) %></h2>
     <p><%= "Status: "+project.status %><p>
     <p><%= "Deadline: "+project.deadline.strftime("%m/%d/%Y") %></p>
     <p class="<%= project.getTimeClass %>"><%= "Day Remaining: "+project.getTimeLeft %></p>
+    <p>Last update: <%= project.updateTime %></p>
   </div>
   <hr>
 <% end %>

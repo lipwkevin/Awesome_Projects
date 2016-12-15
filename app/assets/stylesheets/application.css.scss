@@ -22,7 +22,7 @@
 
 body{
   background-color: #9cc6ea;
-  min-width: 400px;
+  min-width: 480px;
   min-height: 360px;
   width: auto !important;
 }
@@ -49,7 +49,9 @@ body{
     color: #ffffff;
   }
 }
-
+.alert{
+  font-size: 2rem;
+}
 hr {
   border-color: #708090;
 }
