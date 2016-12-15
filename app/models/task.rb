@@ -5,7 +5,9 @@ class Task < ApplicationRecord
   has_many :contributes, dependent: :destroy
   has_many :contributors, through: :contributes, source: :user
 
+  validates :title,presence: true
   validates :deadline,presence: true
+  validates :goal_id,presence: true
 
   after_save :update_project
   def self.getTasks(id)

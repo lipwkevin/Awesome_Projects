@@ -2,7 +2,9 @@ class Goal < ApplicationRecord
   belongs_to :project
   has_many :tasks, lambda { order(created_at: :DESC) }, dependent: :destroy
 
+  validates :title,presence: true
   validates :deadline,presence: true
+  validates :project_id,presence: true
 
   after_save :update_project
 

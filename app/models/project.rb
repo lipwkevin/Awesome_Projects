@@ -11,7 +11,9 @@ class Project < ApplicationRecord
   has_many :leaders, through: :leadings, source: :user
 
 
+  validates :title,presence: true
   validates :deadline,presence: true
+  validates :status,presence: true
 
   def getTimeLeft
     today = Date.today
