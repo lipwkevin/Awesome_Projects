@@ -21,10 +21,13 @@
  @import "bootstrap";
 
 body{
-  background-color: #9cc6ea
+  background-color: #9cc6ea;
+  min-width: 400px;
+  min-height: 360px;
+  width: auto !important;
 }
  html,body{
-     height: 100%
+     height: 100%;
  }
 
 .footer {
@@ -32,9 +35,12 @@ body{
   text-align: center;
 }
 
-.navbar-nav{
+.nav{
   li{
     font: 2rem;
+  }
+  li:hover{
+    background-color: #000080;
   }
 }
 
@@ -42,4 +48,8 @@ body{
   a{
     color: #ffffff;
   }
+}
+
+hr {
+  border-color: #708090;
 }

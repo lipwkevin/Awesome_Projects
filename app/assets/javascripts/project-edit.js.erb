@@ -13,7 +13,7 @@ setTask = function(){
   $('.edit-goal').on('click','.addTask',function(evt){
     evt.stopImmediatePropagation();
     $('.addTask').prop('disabled', true);
-    $(this).siblings('ul').prepend('<li id="form">'+$('#new-task-form-section').html()+'</li>');
+    $(this).siblings('ul').prepend($('#new-task-form-section').html());
     setNewTaskForm();
   });
 
@@ -27,7 +27,7 @@ setGoal = function(){
   $("#add-goal").click(function(evt){
     evt.stopImmediatePropagation();
     $("#add-goal").prop('disabled', true);
-    $('#goals').prepend('<ul class="goal">'+$('#new-goal-form-section').html()+'</ul>');
+    $('#goals').prepend($('#new-goal-form-section').html());
     setNewGoalForm();
   });
   setSortable();

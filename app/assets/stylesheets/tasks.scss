@@ -81,6 +81,14 @@ li {
 .expired{
   & > div > .info{
     background: yellow;
+    border-radius: 5px;
+    margin: 5px;
+    & > p {
+      margin-bottom: 0px;
+    }
+  }
+  div {
+    align-items:center;
   }
 }
 
@@ -96,14 +104,6 @@ p{
 
 i{
   font-size: 1.5rem;
-}
-
-.goallist{
-  padding-left: 0px;
-  background-color: lightblue;
-  min-height: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .show-task{

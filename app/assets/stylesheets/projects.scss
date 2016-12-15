@@ -7,20 +7,6 @@
   color: red;
 }
 
-
-.ui-progressbar-value{
-   color: green;
-}
-
-.progressbar {
-  color:green;
-}
-
-
-p {
-  font-size: 2rem;
-}
-
 .project-detail{
   padding-top: 10px;
   padding-bottom: 10px;
@@ -31,12 +17,10 @@ p {
     color:red;
   }
   &:hover{
-  background-color:  	#F0F8FF;
+  background-color: #e0e4f8;
   }
 }
-h2{
-  margin-top: 0px;
-}
+
 li{
   margin-top: 0px;
   margin-bottom: 0px;
@@ -79,5 +63,7 @@ li{
 }
 
 .project-info{
-  font-size: 1.5rem;
+  & > p{
+    font-size: 2rem;
+  }
 }

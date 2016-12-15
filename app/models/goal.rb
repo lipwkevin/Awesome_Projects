@@ -24,7 +24,7 @@ class Goal < ApplicationRecord
   end
 
   def getTasks
-    return tasks.order(flagged: :desc ,deadline: :asc)
+    return tasks.order(expired: :desc ,flagged: :desc ,deadline: :asc)
   end
 
   def update_project

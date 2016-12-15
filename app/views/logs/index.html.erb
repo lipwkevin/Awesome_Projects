@@ -2,9 +2,13 @@
 
 <%= button_to "Full History",show_logs_path(@id),{class:'btn btn-default link_to',method: :get}%>
 <%=  render 'new',id:@id %>
-<% @logs.each do |log| %>
-  <p><b>Time: <%= log.created_at %> </b></p>
-  <p><b>Created by: <%= log.getUser %> </b></p>
-  <p><%= log.body.gsub(/\n/, '<br/>').html_safe %></p>
-  <hr>
-<% end %>
+<div class='log'>
+  <% @logs.each do |log| %>
+    <div class='info-detail'>
+      <p><b>Time: <%= log.created_at %> </b></p>
+      <p><b>Created by: <%= log.getUser %> </b></p>
+      <p><%= log.body.gsub(/\n/, '<br/>').html_safe %></p>
+    </div>
+    <hr>
+  <% end %>
+</div>

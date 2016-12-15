@@ -1,24 +1,20 @@
-<div id='new-task-form'>
-  <%= form_tag '#',:onSubmit => "return false" do |f|  %>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, nil, class: "form-control" %>
+<li id='form' class='tasks'>
+  <div id='new-task-form'>
+    <%= form_tag '#',:onSubmit => "return false" do |f|  %>
+      <%= label_tag :title %>
+      <%= text_field_tag :title, nil, class: "form-control" %>
 
-    <%= label_tag :deadline %>
-    <%= text_field_tag :deadline,nil, class: 'form-control' %>
-    <%= label_tag :completed %>
-    <%= check_box_tag :completed %>
+      <%= label_tag :deadline %>
+      <%= text_field_tag :deadline,nil, class: 'form-control' %>
+      <%= label_tag :completed %>
+      <%= check_box_tag :completed %>
 
-    <%= label_tag :flagged %>
-    <%= check_box_tag :flagged %>
-    <br>
-    <%= collection_select(
-    :user,:user_id,User.all,
-    :id,:name,
-    {},
-    {multiple: true, id: 'chosen-task'}) %>
-    <br>
-    <%= button_tag 'New Task', class: "new-task-complete btn btn-default",id:'new-task-submit' %>
-    <%= button_tag 'Cancel',id:'new-task-cancel', class: "new-task-cancel btn btn-default" %>
-  <% end %>
-  <hr>
-</div>
+      <%= label_tag :flagged %>
+      <%= check_box_tag :flagged %>
+      <br>
+      <%= button_tag 'New Task', class: "new-task-complete btn btn-default",id:'new-task-submit' %>
+      <%= button_tag 'Cancel',id:'new-task-cancel', class: "new-task-cancel btn btn-default" %>
+    <% end %>
+    <hr>
+  </div>
+</li>

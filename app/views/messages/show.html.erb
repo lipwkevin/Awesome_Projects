@@ -4,8 +4,8 @@
 <div class='chat-contein'>
   <% @messages.each do |message| %>
     <div>
-      <h2 class = <%= (message.getCssClass(current_user)) %>>
-          <span><%= message.getSenderName %>:<%= message.body %></span>
+      <h2 class = "message <%= (message.getCssClass(current_user)) %>">
+          <span><%= message.getMessage(current_user) %></span>
           <p class='time'>Sent at: <%= message.getTime %></p>
         </h2>
     </div>

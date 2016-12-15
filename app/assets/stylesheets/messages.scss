@@ -5,6 +5,7 @@
 
 .recieve{
   text-align: left;
+  margin-left: 10px;
   span{
     background-color: orange;
   }
@@ -12,6 +13,7 @@
 
 .sent{
   text-align: right;
+  margin-right: 10px;
   span{
     background-color: lightblue;
   }
@@ -21,4 +23,17 @@
   background-color: lightgrey;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.message{
+  & > span {
+    border-radius: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  & > p {
+    margin-top: 5px;
+  }
 }

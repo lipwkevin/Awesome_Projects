@@ -4,6 +4,9 @@
 
 .ui-progressbar {
   width: 500px;
+  .ui-progressbar-value {
+    background-color:#7FFF00;
+  }
 }
 .goal{
   li{
@@ -11,6 +14,18 @@
     margin-top: 5px;
   }
 }
+
+form{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .goallist{
   border-radius: 25px;
+  padding-left: 0px;
+  background-color: lightblue;
+  min-height: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
 }
