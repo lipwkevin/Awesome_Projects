@@ -1,4 +1,4 @@
-<li task-id="<%= task.id %>" class="<%=task.getClassType%>" expired="<% task.checkFlag() %>">
+<li task-id="<%= task.id %>" class="<%=task.getClassType%>" expired="<%= task.checkFlag()%>">
   <div class='show-task'>
     <% if true %>
       <label class="switch" switch-id="<%= task.id %>">
