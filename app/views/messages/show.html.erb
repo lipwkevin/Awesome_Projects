@@ -1,11 +1,12 @@
 <h1>Messenger</h1>
-<h2> Chatting with: <%= @user.name %> </h2>
+<h4> Chatting with: <%= @user.name %> </h4>
 <hr>
 <div class='chat-contein'>
   <% @messages.each do |message| %>
     <div>
       <h2 class = "message <%= (message.getCssClass(current_user)) %>">
-          <span><%= message.getMessage(current_user) %></span>
+          <span><%= message.body.gsub(/\n/, '<br/>').html_safe %></span>
+          <p><%= message.getSenderName %></p>
           <p class='time'>Sent at: <%= message.getTime %></p>
         </h2>
     </div>

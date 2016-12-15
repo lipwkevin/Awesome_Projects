@@ -18,14 +18,6 @@ class Message < ApplicationRecord
     return created_at.strftime('%d %b %Y %H:%M')
   end
 
-  def getMessage(user)
-    if (sender_id==user.id.to_s)
-      return "#{body} << #{getSenderName}"
-    else
-      return "#{getSenderName} >> #{body}"
-    end
-  end
-
   def updateConversation
     conversation.update updated_at:DateTime.now
   end
