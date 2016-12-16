@@ -7,6 +7,12 @@
   color: red;
 }
 
+.project-edit-info{
+  & > form{
+    width: 900px;
+    margin: auto;
+  }
+}
 .project-detail{
   padding-top: 10px;
   padding-bottom: 10px;

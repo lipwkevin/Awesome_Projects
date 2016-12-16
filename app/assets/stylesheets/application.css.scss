@@ -22,9 +22,12 @@
 
 body{
   background-color: #9cc6ea;
-  min-width: 480px;
-  min-height: 360px;
-  width: auto !important;
+  .body.container-fluid{
+    min-width: 480px;
+    min-height: 360px;
+    width: auto !important;
+    margin-bottom: 40px;
+  }
 }
  html,body{
      height: 100%;

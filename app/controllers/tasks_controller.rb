@@ -1,13 +1,12 @@
 class TasksController < ApplicationController
   before_action :authenticate_user
-  before_action :authorize_admin, except: [:setComplete]
+  before_action :authorize_admin, except: [:setComplete,:create]
 
   def new
   end
 
   def create
     @task = Task.new params.require(:task).permit([:title,:deadline, :completed,:flagged,:goal_id,user_ids:[]])
-    byebug
     project_id = Goal.find(params[:goal_id]).project_id
     if @task.save
       Log.createLogTask('create',project_id,@task,current_user)
@@ -38,7 +37,7 @@ class TasksController < ApplicationController
   def setFlag
     @task = Task.find(params[:id])
     @task.flagged =  !@task.flagged
-    Log.createLogTask(((task.completed)? "flagged": "unflagged"),task.goal.project.id,@task,current_user)
+    Log.createLogTask(((@task.completed)? "flagged": "unflagged"),@task.goal.project.id,@task,current_user)
     @task.save
     render :nothing => true, :status => 204
   end
@@ -58,6 +57,7 @@ class TasksController < ApplicationController
   end
 
   def authorize_admin
+    @task = Task.find(params[:id])
     unless (user_signed_in? && is_admin(@task.goal.project_id,current_user))
       redirect_to project_path(@task.goal.project_id), alert: 'access denied, you are not an admin of this project!'
     end

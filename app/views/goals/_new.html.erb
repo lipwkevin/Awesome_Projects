@@ -1,4 +1,4 @@
-<ul class='goallist'>
+<div class='new-form'><ul class='goallist'>
   <div id='new-goal-form'>
     <%= form_tag '#',:onSubmit => "return false" do |f|  %>
 
@@ -16,5 +16,4 @@
       <%= button_tag 'Cancel',id:'new-goal-cancel', class: "new-task-cancel btn btn-default" %>
     <% end %>
   </div>
-</ul>
-<hr>
+</ul><hr></div>

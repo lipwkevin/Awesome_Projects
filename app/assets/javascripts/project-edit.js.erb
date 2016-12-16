@@ -13,13 +13,13 @@ setTask = function(){
   $('.edit-goal').on('click','.addTask',function(evt){
     evt.stopImmediatePropagation();
     $('.addTask').prop('disabled', true);
-    $(this).siblings('ul').prepend($('#new-task-form-section').html());
+    $(this).parent().siblings('ul').prepend($('#new-task-form-section').html());
     setNewTaskForm();
   });
 
   $('.edit-goal').on('click','.button-flag',function(evt){
     evt.stopImmediatePropagation();
-    $(this).parents('.tasks').toggleClass('flagged');
+    $(this).parents('li').children().first().toggleClass('flagged');
   })
 }
 
@@ -38,7 +38,7 @@ function setNewTaskForm(){
   $('#deadline').datepicker({ dateFormat: 'yy-mm-dd'});
   $('#chosen-task').chosen({ width: '300px' });
   $('#new-task-cancel').click(function(){
-    $(this).parents('li').remove();
+    $(this).parents('.new').remove();
     $('.addTask').prop('disabled', false);
   })
 
@@ -64,10 +64,11 @@ function setNewTaskForm(){
       url: $DOMAIN+'/goals/'+goal_id+'/tasks',
       data: {task},
       success:function(data){
+        debugger
         xhr = data
         $('.addTask').prop('disabled', false);
         $('.active').append(data)
-        $('.active').children('#form').remove();
+        $('.active').children('.new').remove();
         $('.active').toggleClass('active');
       }
     })
@@ -77,7 +78,7 @@ function setNewTaskForm(){
 function setNewGoalForm(){
   $('#deadline').datepicker({ dateFormat: 'yy-mm-dd'});
   $('#new-goal-cancel').click(function(){
-    $(this).parents('#new-goal-form').remove();
+    $(this).parents('.new-form').remove();
     $('#add-goal').prop('disabled', false);
   });
 
@@ -111,8 +112,8 @@ function setNewGoalForm(){
 
 function saveTasksToGoal(){
   $('.saveTasks').click(function(evt){
-    goal_id = $(this).siblings('ul').attr('goal-id')
-    tasks = $(this).siblings('ul').children('li');
+    goal_id = $(this).parent().siblings('ul').attr('goal-id')
+    tasks = $(this).parent().siblings('ul').children('li');
     for(var i=0;i<tasks.length;i+=1){
       task_id = tasks.eq(i).attr('task-id');
       $.ajax({
