@@ -15,11 +15,11 @@ class TasksController < ApplicationController
       render :new
     end
   end
+
   def destroy
     @task = Task.find params[:id]
     Log.createLogTask('destroy',@task.goal.project.id,@task,current_user)
     @task.destroy
-    redirect_to(:back)
   end
 
   def edit

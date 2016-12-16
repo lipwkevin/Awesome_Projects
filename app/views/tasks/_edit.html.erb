@@ -7,11 +7,9 @@
       </div>
       <div>
         <button class='btn btn-sm btn-default'><%= link_to 'Edit',edit_task_path(task.id) %> </button>
-        <button class='button-flag btn btn-sm btn-default'><%= link_to 'Flag',task_flag_path(task.id) %> </button>
-        <button class='btn btn-danger btn-delete btn-sm'>
-          <%= link_to 'Delete', task_path(task),
-                                method: :delete,
-                                data: { confirm: 'Are you sure?' } %>
+        <button class='button-flag btn btn-sm btn-default'>Urgent</button>
+        <button class='btn btn-danger btn-delete btn-sm btn-remove-task'>
+          <span class="glyphicon glyphicon-trash"></span>
         </button>
       </div>
     </div>

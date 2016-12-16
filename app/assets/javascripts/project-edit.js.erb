@@ -16,7 +16,15 @@ setTask = function(){
     $(this).parent().siblings('ul').prepend($('#new-task-form-section').html());
     setNewTaskForm();
   });
-
+  $('.edit-goal').on('click','.btn-remove-task',function(evt){
+    var task_id = $(this).parents('li').attr('task-id');
+    evt.stopImmediatePropagation();
+    $.ajax({
+      type: 'Delete',
+      url: $DOMAIN+'/tasks/'+task_id,
+    })
+    $(this).parents('li').slideUp(500, function() {$(this).remove();});
+  })
   $('.edit-goal').on('click','.button-flag',function(evt){
     evt.stopImmediatePropagation();
     $(this).parents('li').children().first().toggleClass('flagged');
@@ -30,6 +38,15 @@ setGoal = function(){
     $('#goals').prepend($('#new-goal-form-section').html());
     setNewGoalForm();
   });
+  $('.btn-remove-goal').click(function(evt){
+    evt.stopImmediatePropagation();
+    var goal_id = $(this).parents('.edit-goal').attr('goal-id')
+    $.ajax({
+      type: 'Delete',
+      url: $DOMAIN+'/goals/'+goal_id,
+    })
+    $(this).parents('.edit-goal').slideUp(500, function() {$(this).remove();});
+  })
   setSortable();
   saveTasksToGoal();
 }
@@ -64,7 +81,6 @@ function setNewTaskForm(){
       url: $DOMAIN+'/goals/'+goal_id+'/tasks',
       data: {task},
       success:function(data){
-        debugger
         xhr = data
         $('.addTask').prop('disabled', false);
         $('.active').append(data)
