@@ -48,6 +48,7 @@ class TasksController < ApplicationController
     project_id = params[:id]
     Log.createLogTask(((@task.completed)? "checked": "unchecked"),@task.goal.project.id,@task,current_user)
     @task.save
+    cookies[:timestamp] = DateTime.now();
     render :nothing => true, :status => 204
   end
 

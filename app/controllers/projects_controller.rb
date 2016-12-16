@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
 
   def editMember
     user = User.find(params[:user_id])
-    admin = is_admin(@project.id,user)
+    admin = Leading.find_by(project_id: @project.id, user:user)
     if admin
       admin.destroy
       Log.createLogMember('downgrade',@project.id,current_user,user)
@@ -93,8 +93,7 @@ class ProjectsController < ApplicationController
   end
 
   def check_update
-    if @project.updated_at>cookies[:timestamp]
-      flash.now[:alert] = 'Force Refresh '
+    if @project.updated_at>=cookies[:timestamp]
       render json: {reload:true}
     else
       render json: {reload:false}
