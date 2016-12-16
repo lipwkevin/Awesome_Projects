@@ -1,5 +1,6 @@
 class GoalsController < ApplicationController
-  before_action :requer_login
+  before_action :authenticate_user
+  before_action :authorize_admin
   def new
   end
 
@@ -29,5 +30,11 @@ class GoalsController < ApplicationController
     @goal.update params.require(:goal).permit([:title,:deadline, :description ])
     Log.createLogGoal('update',@goal.project.id,@goal,current_user)
     redirect_to(edit_project_path(@goal.project))
+  end
+
+  def authorize_admin
+    unless (user_signed_in? && is_admin(@goal.project_id,current_user))
+      redirect_to project_path(@goal.project_id), alert: 'access denied, you are not an admin of this project!'
+    end
   end
 end

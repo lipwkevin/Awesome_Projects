@@ -1,17 +1,19 @@
 <div class='edit-goal'>
-  <label><h2><%= goal.title %></h2></label>
-  <br>
-  <button class=" btn btn-default btn-sm"><%= link_to 'Edit', edit_goal_path(goal.id) %></button>
-  <button class="addTask btn btn-default btn-sm">Add Tasks</button>
-  <button class='saveTasks btn btn-default btn-sm'>Save</button>
-  <button class='btn-delete btn btn-danger btn-sm'>
-    <%= link_to 'Delete', goal_path(goal),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %>
-  </button>
-  <h4>Description: <%= goal.description %></h4>
-  <h5>DeadLine: <%= goal.deadline.strftime("%m/%d/%Y") %> </h5>
-  <hr>
+  <div class='info'>
+    <label><h2><%= goal.title %></h2></label>
+    <br>
+    <button class=" btn btn-default btn-sm"><%= link_to 'Edit', edit_goal_path(goal.id) %></button>
+    <button class="addTask btn btn-default btn-sm">Add Tasks</button>
+    <button class='saveTasks btn btn-default btn-sm'>Save</button>
+    <button class='btn-delete btn btn-danger btn-sm'>
+      <%= link_to 'Delete', goal_path(goal),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+    </button>
+    <h4>Description: <%= goal.description %></h4>
+    <h5>Deadline: <%= goal.deadline.strftime("%m/%d/%Y") %> </h5>
+    <hr>
+  </div>
   <ul class='goallist' goal-id="<%= goal.id %>">
     <!-- <li class='tasks'>
       <%= render '/tasks/new' %>

@@ -1,4 +1,4 @@
-<% if Leading.isAdmin(id,current_user) %>
+<% if is_admin(id,current_user) %>
     <%= link_to 'Project Home', project_path(id) ,{ :class => "btn btn-primary btn-lg" } %>
     <%= link_to 'Edit Project', edit_project_path(id) ,{ :class => "btn btn-primary btn-lg" } %>
     <%= link_to 'Members', editMember_path ,{ :class => "btn btn-primary btn-lg" } %>

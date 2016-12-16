@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :find_project, except: [:index,:new,:create]
   before_action :authorize_access, except: [:index,:new,:create]
-  before_action :requer_login, only: [:index,:new,:create]
+  before_action :authorize_admin, except: [:index,:new,:create,:show]
+  before_action :authenticate_user, only: [:index,:new,:create]
   def new
     @project = Project.new
   end
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
 
   def editMember
     user = User.find(params[:user_id])
-    admin = Leading.isAdmin(@project.id,user)
+    admin = is_admin(@project.id,user)
     if admin
       admin.destroy
       Log.createLogMember('downgrade',@project.id,current_user,user)
@@ -115,6 +116,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def authorize_admin
+    unless (user_signed_in? && is_admin(@project.id,current_user))
+      redirect_to project_path(@project.id), alert: 'access denied, you are not an admin of this project!'
+    end
+  end
   def project_params
     params.require(:project).permit([:title, :description,:deadline,:status,id: []])
   end

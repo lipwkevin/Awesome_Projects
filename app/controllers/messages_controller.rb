@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  before_action :requer_login
+  before_action :authenticate_user
 
   def new
     @user = User.find(params[:id])

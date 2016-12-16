@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   def authenticate_user
-    redirect_to new_session_path, alert:'please sign in' unless user_signed_in?
+    redirect_to new_session_path, alert:'Please Log-in and try again' unless user_signed_in?
   end
 
   def user_signed_in?
@@ -14,10 +14,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def requer_login
-    unless (user_signed_in?)
-      redirect_to new_session_path, alert: 'Please Log-in'
-    end
+  def is_admin(project_id,user)
+    return Leading.find_by(project_id: project_id, user:user).present?
   end
-  helper_method :requer_login
+  helper_method :is_admin
 end
